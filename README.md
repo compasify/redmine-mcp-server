@@ -52,6 +52,8 @@ The following environment variables are required (specified in MCP client config
 
 ### MCP Client Configuration
 
+#### Using npx (Recommended for quick start)
+
 Add the following as MCP configuration for your AI agent:
 
 ```json
@@ -69,6 +71,32 @@ Add the following as MCP configuration for your AI agent:
   }
 }
 ```
+
+#### Using Docker (Alternative)
+
+If you prefer using Docker:
+
+```json
+{
+  "mcpServers": {
+    "redmine": {
+      "command": "docker",
+      "args": [
+        "run", "--rm", "-i",
+        "-e", "REDMINE_URL=https://your-redmine.example.com",
+        "-e", "REDMINE_API_KEY=your-api-key-here",
+        "-e", "REDMINE_MCP_READ_ONLY=true",
+        "ghcr.io/onozaty/redmine-mcp-server:latest"
+      ]
+    }
+  }
+}
+```
+
+**When to use Docker:**
+- Enterprise environments requiring container isolation
+- Reproducible deployments across different systems
+- Environments where Node.js installation is restricted
 
 Below are specific configuration methods for several MCP clients:
 
