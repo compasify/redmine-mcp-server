@@ -18,6 +18,7 @@
  * - REDMINE_MCP_DISABLE_MEMBERSHIPS=true    - Disable membership tools
  * - REDMINE_MCP_DISABLE_ATTACHMENTS=true    - Disable attachment tools
  * - REDMINE_MCP_DISABLE_FILES=true          - Disable file tools
+ * - REDMINE_MCP_DISABLE_PROJECTS=true       - Disable project tools
  */
 export interface FeatureFlags {
   relations: boolean;
@@ -31,6 +32,7 @@ export interface FeatureFlags {
   memberships: boolean;
   attachments: boolean;
   files: boolean;
+  projects: boolean;
 }
 
 export interface ServerConfig {
@@ -57,6 +59,7 @@ const loadFeatureFlags = (): FeatureFlags => {
     memberships: process.env.REDMINE_MCP_DISABLE_MEMBERSHIPS !== "true",
     attachments: process.env.REDMINE_MCP_DISABLE_ATTACHMENTS !== "true",
     files: process.env.REDMINE_MCP_DISABLE_FILES !== "true",
+    projects: process.env.REDMINE_MCP_DISABLE_PROJECTS !== "true",
   };
 };
 

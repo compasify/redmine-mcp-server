@@ -370,55 +370,59 @@ if (config.features.watchers) {
     removeWatcherHandler
   );
 }
-registerTool(
-  "getProjects",
-  "List projects",
-  ToolType.READ_ONLY,
-  { pathParams: getProjectsParams, queryParams: getProjectsQueryParams },
-  getProjectsHandler
-);
-registerTool(
-  "createProject",
-  "Create project",
-  ToolType.WRITE,
-  { pathParams: createProjectParams, bodyParams: createProjectBody },
-  createProjectHandler
-);
-registerTool(
-  "getProject",
-  "Show project",
-  ToolType.READ_ONLY,
-  { pathParams: getProjectParams, queryParams: getProjectQueryParams },
-  getProjectHandler
-);
-registerTool(
-  "updateProject",
-  "Update project",
-  ToolType.WRITE,
-  { pathParams: updateProjectParams, bodyParams: updateProjectBody },
-  updateProjectHandler
-);
-registerTool(
-  "deleteProject",
-  "Delete project",
-  ToolType.WRITE,
-  { pathParams: deleteProjectParams },
-  deleteProjectHandler
-);
-registerTool(
-  "archiveProject",
-  "Archive project",
-  ToolType.WRITE,
-  { pathParams: archiveProjectParams },
-  archiveProjectHandler
-);
-registerTool(
-  "unarchiveProject",
-  "Unarchive project",
-  ToolType.WRITE,
-  { pathParams: unarchiveProjectParams },
-  unarchiveProjectHandler
-);
+if (config.features.projects) {
+  registerTool(
+    "getProjects",
+    "List projects",
+    ToolType.READ_ONLY,
+    { pathParams: getProjectsParams, queryParams: getProjectsQueryParams },
+    getProjectsHandler
+  );
+}
+if (config.features.projects) {
+  registerTool(
+    "createProject",
+    "Create project",
+    ToolType.WRITE,
+    { pathParams: createProjectParams, bodyParams: createProjectBody },
+    createProjectHandler
+  );
+  registerTool(
+    "getProject",
+    "Show project",
+    ToolType.READ_ONLY,
+    { pathParams: getProjectParams, queryParams: getProjectQueryParams },
+    getProjectHandler
+  );
+  registerTool(
+    "updateProject",
+    "Update project",
+    ToolType.WRITE,
+    { pathParams: updateProjectParams, bodyParams: updateProjectBody },
+    updateProjectHandler
+  );
+  registerTool(
+    "deleteProject",
+    "Delete project",
+    ToolType.WRITE,
+    { pathParams: deleteProjectParams },
+    deleteProjectHandler
+  );
+  registerTool(
+    "archiveProject",
+    "Archive project",
+    ToolType.WRITE,
+    { pathParams: archiveProjectParams },
+    archiveProjectHandler
+  );
+  registerTool(
+    "unarchiveProject",
+    "Unarchive project",
+    ToolType.WRITE,
+    { pathParams: unarchiveProjectParams },
+    unarchiveProjectHandler
+  );
+}
 if (config.features.memberships) {
   registerTool(
     "getMemberships",
@@ -456,20 +460,22 @@ if (config.features.memberships) {
     deleteMembershipHandler
   );
 }
-registerTool(
-  "closeProject",
-  "Close project",
-  ToolType.WRITE,
-  { pathParams: closeProjectParams },
-  closeProjectHandler
-);
-registerTool(
-  "reopenProject",
-  "Reopen project",
-  ToolType.WRITE,
-  { pathParams: reopenProjectParams },
-  reopenProjectHandler
-);
+if (config.features.projects) {
+  registerTool(
+    "closeProject",
+    "Close project",
+    ToolType.WRITE,
+    { pathParams: closeProjectParams },
+    closeProjectHandler
+  );
+  registerTool(
+    "reopenProject",
+    "Reopen project",
+    ToolType.WRITE,
+    { pathParams: reopenProjectParams },
+    reopenProjectHandler
+  );
+}
 if (config.features.users) {
   registerTool(
     "getUsers",

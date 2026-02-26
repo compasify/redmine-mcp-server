@@ -68,6 +68,39 @@ You can selectively disable tool groups to reduce the number of tools loaded by 
 | `REDMINE_MCP_DISABLE_MEMBERSHIPS` | Memberships (list, show, create, update, delete) |
 | `REDMINE_MCP_DISABLE_ATTACHMENTS` | Attachments (show, update, delete, upload/download, thumbnails) |
 | `REDMINE_MCP_DISABLE_FILES` | Files (list, create) |
+| `REDMINE_MCP_DISABLE_PROJECTS` | Project management (list, show, create, update, delete, archive/unarchive, close/reopen) |
+
+#### Full Configuration Example
+
+You can copy and paste this into your MCP client configuration (e.g., `claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "redmine": {
+      "command": "npx",
+      "args": ["-y", "@onozaty/redmine-mcp-server"],
+      "env": {
+        "REDMINE_URL": "https://your-redmine.example.com",
+        "REDMINE_API_KEY": "your-api-key-here",
+        "REDMINE_MCP_READ_ONLY": "false",
+        "REDMINE_MCP_DISABLE_RELATIONS": "false",
+        "REDMINE_MCP_DISABLE_TIME_ENTRIES": "false",
+        "REDMINE_MCP_DISABLE_VERSIONS": "false",
+        "REDMINE_MCP_DISABLE_WATCHERS": "false",
+        "REDMINE_MCP_DISABLE_WIKI": "false",
+        "REDMINE_MCP_DISABLE_NEWS": "false",
+        "REDMINE_MCP_DISABLE_USERS": "false",
+        "REDMINE_MCP_DISABLE_GROUPS": "false",
+        "REDMINE_MCP_DISABLE_MEMBERSHIPS": "false",
+        "REDMINE_MCP_DISABLE_ATTACHMENTS": "false",
+        "REDMINE_MCP_DISABLE_FILES": "false",
+        "REDMINE_MCP_DISABLE_PROJECTS": "false"
+      }
+    }
+  }
+}
+```
 
 ### MCP Client Configuration
 
