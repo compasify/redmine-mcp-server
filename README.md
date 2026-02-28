@@ -72,14 +72,16 @@ You can selectively disable tool groups to reduce the number of tools loaded by 
 
 #### Full Configuration Example
 
-You can copy and paste this into your MCP client configuration (e.g., `claude_desktop_config.json`):
+You can copy and paste this into your MCP client configuration (e.g., `claude_desktop_config.json`).
+
+**Option 1: Using `npx` (no installation required)**
 
 ```json
 {
   "mcpServers": {
     "redmine": {
       "command": "npx",
-      "args": ["-y", "@onozaty/redmine-mcp-server"],
+      "args": ["-y", "@compasify/redmine-mcp-server"],
       "env": {
         "REDMINE_URL": "https://your-redmine.example.com",
         "REDMINE_API_KEY": "your-api-key-here",
@@ -102,6 +104,42 @@ You can copy and paste this into your MCP client configuration (e.g., `claude_de
 }
 ```
 
+**Option 2: Using `node` with a local `server.mjs` file**
+
+Download `server.mjs` from the [releases page](https://github.com/compasify/redmine-mcp-server/releases) and specify its local path:
+
+```json
+{
+  "mcpServers": {
+    "redmine": {
+      "command": "node",
+      "args": [
+        "/path/to/server.mjs"
+      ],
+      "env": {
+        "REDMINE_URL": "https://your-redmine.example.com",
+        "REDMINE_API_KEY": "your-api-key-here",
+        "REDMINE_MCP_READ_ONLY": "false",
+        "REDMINE_MCP_DISABLE_RELATIONS": "false",
+        "REDMINE_MCP_DISABLE_TIME_ENTRIES": "false",
+        "REDMINE_MCP_DISABLE_VERSIONS": "false",
+        "REDMINE_MCP_DISABLE_WATCHERS": "false",
+        "REDMINE_MCP_DISABLE_WIKI": "false",
+        "REDMINE_MCP_DISABLE_NEWS": "false",
+        "REDMINE_MCP_DISABLE_USERS": "false",
+        "REDMINE_MCP_DISABLE_GROUPS": "false",
+        "REDMINE_MCP_DISABLE_MEMBERSHIPS": "false",
+        "REDMINE_MCP_DISABLE_ATTACHMENTS": "false",
+        "REDMINE_MCP_DISABLE_FILES": "false",
+        "REDMINE_MCP_DISABLE_PROJECTS": "false"
+      }
+    }
+  }
+}
+```
+
+> **Windows example path:** `"args": ["D:\\path\\to\\server.mjs"]`
+
 ### MCP Client Configuration
 
 #### Using npx (Recommended for quick start)
@@ -113,7 +151,7 @@ Add the following as MCP configuration for your AI agent:
   "mcpServers": {
     "redmine": {
       "command": "npx",
-      "args": ["-y", "@onozaty/redmine-mcp-server"],
+      "args": ["-y", "@compasify/redmine-mcp-server"],
       "env": {
         "REDMINE_URL": "https://your-redmine.example.com",
         "REDMINE_API_KEY": "your-api-key-here",
@@ -138,7 +176,7 @@ If you prefer using Docker:
         "-e", "REDMINE_URL=https://your-redmine.example.com",
         "-e", "REDMINE_API_KEY=your-api-key-here",
         "-e", "REDMINE_MCP_READ_ONLY=true",
-        "ghcr.io/onozaty/redmine-mcp-server:latest"
+        "ghcr.io/compasify/redmine-mcp-server:latest"
       ]
     }
   }
@@ -161,7 +199,7 @@ Add the following to `claude_desktop_config.json`:
   "mcpServers": {
     "redmine": {
       "command": "npx",
-      "args": ["-y", "@onozaty/redmine-mcp-server"],
+      "args": ["-y", "@compasify/redmine-mcp-server"],
       "env": {
         "REDMINE_URL": "https://your-redmine.example.com",
         "REDMINE_API_KEY": "your-api-key-here",
@@ -178,17 +216,17 @@ In Claude Code, you can add MCP servers using the following commands:
 
 Local configuration:
 ```bash
-claude mcp add redmine -e REDMINE_URL=https://your-redmine.example.com -e REDMINE_API_KEY=your-api-key-here -e REDMINE_MCP_READ_ONLY=true -- npx -y @onozaty/redmine-mcp-server
+claude mcp add redmine -e REDMINE_URL=https://your-redmine.example.com -e REDMINE_API_KEY=your-api-key-here -e REDMINE_MCP_READ_ONLY=true -- npx -y @compasify/redmine-mcp-server
 ```
 
 Project configuration:
 ```bash
-claude mcp add -s project redmine -e REDMINE_URL=https://your-redmine.example.com -e REDMINE_API_KEY=your-api-key-here -e REDMINE_MCP_READ_ONLY=true -- npx -y @onozaty/redmine-mcp-server
+claude mcp add -s project redmine -e REDMINE_URL=https://your-redmine.example.com -e REDMINE_API_KEY=your-api-key-here -e REDMINE_MCP_READ_ONLY=true -- npx -y @compasify/redmine-mcp-server
 ```
 
 User configuration (global):
 ```bash
-claude mcp add -s user redmine -e REDMINE_URL=https://your-redmine.example.com -e REDMINE_API_KEY=your-api-key-here -e REDMINE_MCP_READ_ONLY=true -- npx -y @onozaty/redmine-mcp-server
+claude mcp add -s user redmine -e REDMINE_URL=https://your-redmine.example.com -e REDMINE_API_KEY=your-api-key-here -e REDMINE_MCP_READ_ONLY=true -- npx -y @compasify/redmine-mcp-server
 ```
 
 #### Visual Studio Code
@@ -201,7 +239,7 @@ Project configuration (`.vscode/mcp.json`):
     "redmine": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@onozaty/redmine-mcp-server"],
+      "args": ["-y", "@compasify/redmine-mcp-server"],
       "env": {
         "REDMINE_URL": "https://your-redmine.example.com",
         "REDMINE_API_KEY": "your-api-key-here",
@@ -221,7 +259,7 @@ User configuration (`settings.json`):
       "redmine": {
         "type": "stdio",
         "command": "npx",
-        "args": ["-y", "@onozaty/redmine-mcp-server"],
+        "args": ["-y", "@compasify/redmine-mcp-server"],
         "env": {
           "REDMINE_URL": "https://your-redmine.example.com",
           "REDMINE_API_KEY": "your-api-key-here",
@@ -264,7 +302,12 @@ MIT License
 
 ## Author
 
+[compasify](https://github.com/compasify)
+
+### Original Author
+
 [onozaty](https://github.com/onozaty)
+
 
 ## Acknowledgments
 
